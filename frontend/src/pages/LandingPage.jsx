@@ -8,7 +8,7 @@ export const LandingPage = () => {
 
   const handleQuickCandidateLogin = async () => {
     try {
-      await login('user@omnix.com', 'user123');
+      await login('user@quizbuilder.com', 'user123');
       navigate('/dashboard');
     } catch (err) {
       console.error(err);
@@ -17,7 +17,7 @@ export const LandingPage = () => {
 
   const handleQuickAdminLogin = async () => {
     try {
-      await login('admin@omnix.com', 'admin123');
+      await login('admin@quizbuilder.com', 'admin123');
       navigate('/admin/dashboard');
     } catch (err) {
       console.error(err);
@@ -30,13 +30,13 @@ export const LandingPage = () => {
       <section className="hero-section">
         <div className="hero-badge">
           <span className="badge-pulse"></span>
-          Enterprise-Grade Online Examination Platform
+          Intelligent & Empathetic Assessment Platform
         </div>
         <h1 className="hero-title">
-          Master Your Skills With <span className="text-gradient">Precision Testing</span>
+          Master Your Skills With <span className="text-gradient">Confidence & Clarity</span>
         </h1>
         <p className="hero-subtitle">
-          Timed evaluations, strict 2-attempt mastery rules, baseline vs retake performance analytics, and instant question audits.
+          Practice without test anxiety. Enjoy timed evaluations, an encouraging 2-attempt growth system, instant rationales, and real-time score improvement tracking.
         </p>
 
         <div className="hero-cta-group">
@@ -67,11 +67,11 @@ export const LandingPage = () => {
           <div className="demo-buttons">
             <button onClick={handleQuickCandidateLogin} className="btn-demo candidate">
               <strong>Candidate Demo</strong>
-              <small>user@omnix.com | user123</small>
+              <small>user@quizbuilder.com | user123</small>
             </button>
             <button onClick={handleQuickAdminLogin} className="btn-demo admin">
               <strong>Administrator Demo</strong>
-              <small>admin@omnix.com | admin123</small>
+              <small>admin@quizbuilder.com | admin123</small>
             </button>
           </div>
         </div>

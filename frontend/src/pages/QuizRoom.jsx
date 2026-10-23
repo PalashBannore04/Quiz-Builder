@@ -228,6 +228,14 @@ export const QuizRoom = () => {
       <div className="quiz-body-layout">
         {/* Question Area */}
         <main className="quiz-question-container">
+          {/* Smooth Progress Track */}
+          <div className="quiz-progress-track">
+            <div
+              className="quiz-progress-bar"
+              style={{ width: `${((currentIndex + 1) / questions.length) * 100}%` }}
+            ></div>
+          </div>
+
           <div className="question-header-row">
             <div className="question-number-badge">
               Question {currentIndex + 1} of {questions.length}
@@ -235,6 +243,10 @@ export const QuizRoom = () => {
             <div className="keyboard-hint-pill">
               <span>Keys: 1-4 or A-D to select | &larr; &rarr; to navigate</span>
             </div>
+          </div>
+
+          <div className="question-friendly-tip">
+            <span>✨ Take a deep breath and read each choice carefully. You can freely change answers or revisit questions anytime.</span>
           </div>
 
           <div className="question-text-card">
@@ -352,7 +364,11 @@ export const QuizRoom = () => {
         }
       >
         <div className="submit-modal-content">
-          <p>Are you sure you want to finalize and submit your assessment?</p>
+          <p className="modal-lead-text">
+            {unansweredCount === 0
+              ? '🎉 Fantastic! You have answered every question in this assessment.'
+              : `You have answered ${answeredCount} of ${questions.length} questions.`}
+          </p>
           <div className="modal-summary-grid">
             <div className="modal-stat-box answered">
               <span className="stat-num">{answeredCount}</span>
@@ -364,12 +380,16 @@ export const QuizRoom = () => {
             </div>
             <div className="modal-stat-box time">
               <span className="stat-num">{formatTime(timeLeftSeconds)}</span>
-              <span className="stat-label">Time Remaining</span>
+              <span className="stat-label">Time Left</span>
             </div>
           </div>
-          {unansweredCount > 0 && (
+          {unansweredCount > 0 ? (
             <div className="alert alert-warning mt-3">
-              You have {unansweredCount} unanswered question{unansweredCount > 1 ? 's' : ''}. Unanswered questions will receive 0 points.
+              💡 <strong>Friendly reminder:</strong> You still have {unansweredCount} unanswered question{unansweredCount > 1 ? 's' : ''}. You can return to answer {unansweredCount > 1 ? 'them' : 'it'} or proceed to submit now.
+            </div>
+          ) : (
+            <div className="alert alert-success mt-3">
+              🌟 Ready when you are! Your score and full question explanations will be displayed immediately after submission.
             </div>
           )}
         </div>

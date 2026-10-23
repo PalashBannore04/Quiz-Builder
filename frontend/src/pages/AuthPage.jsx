@@ -47,14 +47,14 @@ export const AuthPage = ({ initialMode = 'login' }) => {
   };
 
   const fillCandidateCredentials = () => {
-    setEmail('user@omnix.com');
+    setEmail('user@quizbuilder.com');
     setPassword('user123');
     setIsRegister(false);
     setError('');
   };
 
   const fillAdminCredentials = () => {
-    setEmail('admin@omnix.com');
+    setEmail('admin@quizbuilder.com');
     setPassword('admin123');
     setIsRegister(false);
     setError('');
@@ -170,10 +170,10 @@ export const AuthPage = ({ initialMode = 'login' }) => {
           <span className="quick-fill-label">Quick-Fill Credentials:</span>
           <div className="quick-fill-buttons">
             <button type="button" onClick={fillCandidateCredentials} className="btn-chip candidate-chip">
-              Candidate (user@omnix.com)
+              Candidate (user@quizbuilder.com)
             </button>
             <button type="button" onClick={fillAdminCredentials} className="btn-chip admin-chip">
-              Admin (admin@omnix.com)
+              Admin (admin@quizbuilder.com)
             </button>
           </div>
         </div>

@@ -57,20 +57,20 @@ public class SeedDataService implements ApplicationRunner {
     @Transactional
     public void populateSeedData() {
         // 1. Users
-        User candidate = userRepository.findByEmail("user@omnix.com").orElseGet(() -> {
+        User candidate = userRepository.findByEmail("user@quizbuilder.com").orElseGet(() -> {
             User u = new User();
             u.setName("Candidate User");
-            u.setEmail("user@omnix.com");
+            u.setEmail("user@quizbuilder.com");
             u.setPassword(passwordEncoder.encode("user123"));
             u.setRole("ROLE_USER");
             u.setCreatedAt(LocalDateTime.now().minusDays(5));
             return userRepository.save(u);
         });
 
-        User admin = userRepository.findByEmail("admin@omnix.com").orElseGet(() -> {
+        User admin = userRepository.findByEmail("admin@quizbuilder.com").orElseGet(() -> {
             User u = new User();
             u.setName("System Administrator");
-            u.setEmail("admin@omnix.com");
+            u.setEmail("admin@quizbuilder.com");
             u.setPassword(passwordEncoder.encode("admin123"));
             u.setRole("ROLE_ADMIN");
             u.setCreatedAt(LocalDateTime.now().minusDays(10));

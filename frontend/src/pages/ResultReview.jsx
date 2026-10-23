@@ -67,6 +67,15 @@ export const ResultReview = () => {
     return 'text-danger';
   };
 
+  const getFeedbackMessage = (pct) => {
+    if (pct === 100) return { emoji: '🏆', title: 'Flawless Mastery!', desc: 'You answered every single question correctly. Outstanding conceptual command!' };
+    if (pct >= 80) return { emoji: '🌟', title: 'Excellent Performance!', desc: 'Solid grasp of this domain. Just a slight review away from perfection.' };
+    if (pct >= 60) return { emoji: '👏', title: 'Great Effort!', desc: 'Strong foundation! Review the detailed rationales below to sharpen your edge.' };
+    return { emoji: '💪', title: 'Valuable Learning Experience!', desc: 'Every attempt builds knowledge. Review each explanation below to ace your next retake!' };
+  };
+
+  const feedback = getFeedbackMessage(result.percentage);
+
   return (
     <div className="result-review-page">
       <div className="review-container">
@@ -98,7 +107,7 @@ export const ResultReview = () => {
                   {result.attemptNumber === 1 ? 'Attempt 1: Baseline' : 'Attempt 2: Final Retake'}
                 </span>
                 <span className={`status-pill ${result.status === 'COMPLETED' ? 'status-completed' : 'status-timedout'}`}>
-                  {result.status}
+                  {result.status === 'COMPLETED' ? 'Completed' : 'Timed Out'}
                 </span>
               </div>
             </div>
@@ -113,6 +122,15 @@ export const ResultReview = () => {
               <div className="score-percentage-tag">
                 {result.percentage}% Score
               </div>
+            </div>
+          </div>
+
+          {/* Warm Empathic Feedback Box */}
+          <div className="score-feedback-callout">
+            <span className="feedback-emoji">{feedback.emoji}</span>
+            <div>
+              <strong className="feedback-title">{feedback.title}</strong>
+              <p className="feedback-desc">{feedback.desc}</p>
             </div>
           </div>
 

@@ -54,6 +54,9 @@ export const Navbar = () => {
               )}
 
               <div className="nav-user-menu">
+                <div className="user-avatar-circle" title={user?.email}>
+                  {user?.name ? user.name.charAt(0).toUpperCase() : 'U'}
+                </div>
                 <div className="user-badge-container">
                   <span className="user-name">{user?.name}</span>
                   <span className={`role-pill ${isAdmin ? 'admin-pill' : 'candidate-pill'}`}>

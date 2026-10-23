@@ -19,7 +19,7 @@ A production-ready, full-stack online examination and assessment platform featur
 ## Project Structure
 
 ```
-udika/
+Quiz-Builder/
 ├── backend/
 │   ├── pom.xml
 │   └── src/
@@ -132,14 +132,28 @@ udika/
 
 | Role | Email | Password | Access Rights |
 | :--- | :--- | :--- | :--- |
-| **Candidate** | `user@omnix.com` | `user123` | Domains Dashboard, Quizzes, History, Review |
-| **Administrator** | `admin@omnix.com` | `admin123` | Analytics, Tracker, Audit, Question & Domain CRUD |
+| **Candidate** | `user@quizbuilder.com` | `user123` | Domains Dashboard, Quizzes, History, Review |
+| **Administrator** | `admin@quizbuilder.com` | `admin123` | Analytics, Tracker, Audit, Question & Domain CRUD |
 
 *(The frontend includes 1-click credential quick-fill buttons for both accounts.)*
 
 ---
 
-## Prerequisites
+## Quickstart with Docker Compose 🐳
+
+You can spin up the entire application stack (MySQL 8 database, Spring Boot backend, and React Nginx frontend) with a single command:
+
+```bash
+docker compose up --build
+```
+
+- **Frontend App**: `http://localhost:5173`
+- **Backend API**: `http://localhost:8080/api`
+- **MySQL Database**: `localhost:3306` (Database: `quiz_builder`, Password: `rootpassword`)
+
+---
+
+## Local Development Prerequisites
 1. **Java Development Kit (JDK)**: Java 17 or higher (`java -version`)
 2. **Apache Maven**: Version 3.8+ (`mvn -version`)
 3. **Node.js**: Version 18+ and npm (`node -v`, `npm -v`)
@@ -147,7 +161,7 @@ udika/
 
 ---
 
-## Database Setup
+## Database Setup (Local)
 
 1. Log into your MySQL console:
    ```bash
@@ -155,22 +169,22 @@ udika/
    ```
 2. Run `schema.sql` and `seed.sql`:
    ```sql
-   SOURCE c:/Users/Lenovo/OneDrive/Desktop/udika/schema.sql;
-   SOURCE c:/Users/Lenovo/OneDrive/Desktop/udika/seed.sql;
+   SOURCE schema.sql;
+   SOURCE seed.sql;
    ```
-   *(Alternatively, the backend Spring Boot `SeedDataService` will automatically initialize all tables, default accounts, 6 categories, and 30 questions on startup if the database is empty).*
+   *(Alternatively, the backend Spring Boot `SeedDataService` automatically initializes all tables, default accounts, 6 categories, and 30 questions on startup if the database is empty).*
 
 3. Verify or update connection credentials in:
    `backend/src/main/resources/application.properties`
    ```properties
    spring.datasource.url=jdbc:mysql://localhost:3306/quiz_builder?createDatabaseIfNotExist=true&useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
    spring.datasource.username=root
-   spring.datasource.password=root
+   spring.datasource.password=
    ```
 
 ---
 
-## Step-by-Step Run Instructions
+## Step-by-Step Run Instructions (Without Docker)
 
 ### 1. Run Backend (Spring Boot 3)
 In a terminal, navigate to the `backend` directory and start the application:
@@ -201,7 +215,7 @@ Execute these 6 verification steps to confirm end-to-end functionality:
 
 1. **Candidate Registration & Login**:
    - Navigate to `http://localhost:5173/login`.
-   - Click the **"Candidate"** quick-fill chip (`user@omnix.com` / `user123`) or click **"Register Here"** to register a new account.
+   - Click the **"Candidate"** quick-fill chip (`user@quizbuilder.com` / `user123`) or click **"Register Here"** to register a new account.
    - Confirm successful sign in and redirection to `/dashboard`.
 
 2. **Domain Dashboard & Quota Status**:
@@ -233,7 +247,7 @@ Execute these 6 verification steps to confirm end-to-end functionality:
      ```
 
 6. **Admin Analytics, Score Delta & Role Security**:
-   - Log out and log in as Administrator (`admin@omnix.com` / `admin123`).
+   - Log out and log in as Administrator (`admin@quizbuilder.com` / `admin123`).
    - Navigate to `/admin/dashboard`.
    - Observe the 4 KPI cards (Total Domains, Active Questions, Registered Candidates, Evaluations Evaluated).
    - Inspect the **Submission Tracker**: verify the row for Candidate shows:

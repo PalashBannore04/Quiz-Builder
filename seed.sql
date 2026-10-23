@@ -2,12 +2,12 @@
 USE `quiz_builder`;
 
 -- 1. Insert Seed Users
--- Password for user@omnix.com is 'user123'
--- Password for admin@omnix.com is 'admin123'
+-- Password for user@quizbuilder.com is 'user123'
+-- Password for admin@quizbuilder.com is 'admin123'
 -- BCrypt format: 10 rounds
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `role`, `created_at`) VALUES
-(1, 'Candidate User', 'user@omnix.com', '$2a$10$wKzNn8k7kF7p0L2t8w.UaekR/OqR0mYp49V8ZpI4x18H6o.L4Wf6m', 'ROLE_USER', NOW()),
-(2, 'System Administrator', 'admin@omnix.com', '$2a$10$4nflA4n0eYV/v1V0BsqWfOqKj7jO5F3t6O5vVq0t4Y4vW4Qj8jO5m', 'ROLE_ADMIN', NOW());
+(1, 'Candidate User', 'user@quizbuilder.com', '$2a$10$wKzNn8k7kF7p0L2t8w.UaekR/OqR0mYp49V8ZpI4x18H6o.L4Wf6m', 'ROLE_USER', NOW()),
+(2, 'System Administrator', 'admin@quizbuilder.com', '$2a$10$4nflA4n0eYV/v1V0BsqWfOqKj7jO5F3t6O5vVq0t4Y4vW4Qj8jO5m', 'ROLE_ADMIN', NOW());
 
 -- 2. Insert 6 Categories
 INSERT INTO `categories` (`id`, `title`, `description`, `difficulty`, `timer_minutes`) VALUES

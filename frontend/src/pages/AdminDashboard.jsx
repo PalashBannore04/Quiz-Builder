@@ -488,7 +488,7 @@ export const AdminDashboard = () => {
           <ul>
             <li>Restore all 6 default categories (Java, Web Dev, Python, SQL, DSA, Logic)</li>
             <li>Restore 30 curated questions with option explanations</li>
-            <li>Restore candidate (`user@omnix.com`) and admin (`admin@omnix.com`) users</li>
+            <li>Restore candidate (`user@quizbuilder.com`) and admin (`admin@quizbuilder.com`) users</li>
             <li>Re-populate baseline and retake evaluation records for delta tracking</li>
           </ul>
         </div>
